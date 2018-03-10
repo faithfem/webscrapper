@@ -3,7 +3,9 @@ import urllib2
 from bs4 import BeautifulSoup
 
 # specify the url
-quote_page = 'https://www.bloomberg.com/quote/SPX:IND'
+quote_page = ["https://www.bloomberg.com/quote/SPX:IND",
+"https://www.bloomberg.com/quote/INDU:IND"]
+
 
 page = urllib2.urlopen(quote_page)
 soup = BeautifulSoup(page, "html.parser")
@@ -17,4 +19,25 @@ print name
 price_box = soup.find('div', attrs={'class':'price'})
 price = price_box.text
 print price
+
+import csv
+from datetime import datetime
+
+with open("index.csv", "a") as csv_file:
+    writer = csv.writer(csv_file)
+    writer.writerow([name, price, datetime.now()])
+    
+# for loop
+data = []
+for pg in quote_page:
+    #query the website and return the html to the variable "page"
+    page = urllib2.urlopen(pg)
+    
+    #parse the html using beautiful soup and store in variable sout
+    soup = BeautifulSoup(page, "html.parser")
+    
+    
+
+    
+    
 
