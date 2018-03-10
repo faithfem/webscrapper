@@ -2,6 +2,7 @@
 import urllib2
 from bs4 import BeautifulSoup
 
+
 # specify the url
 quote_page = ["https://www.bloomberg.com/quote/SPX:IND",
 "https://www.bloomberg.com/quote/INDU:IND"]
